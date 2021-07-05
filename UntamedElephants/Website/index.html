@@ -1,0 +1,967 @@
+<html>
+<link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+<link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+<style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style>
+	<head>
+		<title>Untamed Elephants</title>
+		<link rel="shortcut icon" href="assets/logo.png"/>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=1, user-scalable=yes" />
+		<link rel="stylesheet" href="assets/assets.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/web3modal"></script>
+		<script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+		<script>
+		</script>
+		<style>
+		
+			.faq {
+				margin: 0 auto;
+				padding: 100px 0;
+				max-width: 600px;
+			}
+
+			.faq__question {
+				max-width: 600px;
+				margin: 30px auto;
+			}
+
+			.faq__toggle {
+				list-style: none;
+				font-size: 1.5em;
+				cursor: pointer;
+				transition: opacity .1s;
+			}
+
+			.faq__toggle:hover {
+				opacity: 0.7;
+			}
+
+			.faq__answer {
+				overflow: hidden;
+				color: #bbb;
+				font-size: 0.9em;
+			}
+
+			.faq__question[open] .faq__answer {
+				transform: translateX(0);
+			}
+
+			.reveal_overlay {
+				display: block;
+				height: 300%;
+				width: 100%;
+				position: absolute;
+			}
+
+			.faq__question[open] .reveal_overlay {
+				animation: reveal .1s ease-in-out forwards;
+			}
+
+			@keyframes reveal {
+				0% 		{ transform:translateY(0);  }
+				100% 	{ transform:translateY(200%);  }
+			}
+
+			.faq__question[open] .faq__answer {
+			  animation: sweep 0.1s ease-in-out;
+			}
+
+			@keyframes sweep {
+			  0%    { opacity: 0; margin-top: -10px; }
+			  100%  { opacity: 1; margin-top: 0px; }
+			}
+
+			
+			
+			
+			body,h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif;}
+			body, html {
+			  height: 100%;
+			  width: 100%;
+			  color: #000000;
+			  background-color: #ffffff;
+			  line-height: 1.8;
+			}
+
+			/* Create a Parallax Effect */
+			.bgimg-1, .bgimg-2, .bgimg-3 {
+			  background-attachment: fixed;
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			}
+
+			/* First image (Logo. Full height) */
+			.bgimg-1 {
+			  background-image: url('assets/imageB2.jpg');
+			  height: 100%;
+			}
+
+			/* Second image (Portfolio) */
+			.bgimg-2 {
+			  background-image: url("assets/parallax0.png");
+			  min-height: 400px;
+			}
+
+			/* Third image (Contact) */
+			.bgimg-3 {
+			  background-image: url("assets/parallax1.png");
+			  min-height: 400px;
+			}
+
+			.ue-wide {letter-spacing: 10px;}
+			.ue-hover-opacity {cursor: pointer;}
+
+			/* Turn off parallax scrolling for tablets and phones */
+			@media only screen and (max-device-width: 1600px) {
+			  .bgimg-2, .bgimg-3 {
+				background-attachment: scroll;
+				min-height: 400px;
+			  }
+			}
+			@media only screen and (max-device-width: 1600px) {
+			  .bgimg-1 {
+				background-attachment: scroll;
+				height: 100%;
+			  }
+			}
+
+
+			/* TIMELINE
+			–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+			.timeline ul {
+			  background: #ffffff;
+			  padding: 50px 0;
+			}
+
+			.timeline ul li {
+			  list-style-type: none;
+			  position: relative;
+			  width: 6px;
+			  margin: 0 auto;
+			  padding-top: 50px;
+			  background: #dddddd;
+			}
+
+			.timeline ul li div {
+			  color: #000000;
+			  position: relative;
+			  bottom: 0;
+			  width: 700px;
+			  padding: 15px;
+			  background: #ffffff;
+			  border-radius: 5px;
+			}
+
+			.timeline ul li:nth-child(odd) div {
+			  left: 45px;
+			}
+
+			.timeline ul li:nth-child(even) div {
+			  left: -739px;
+			}
+
+			time {
+			  display: block;
+			  font-size: 1.2rem;
+			  font-weight: bold;
+			  margin-bottom: 8px;
+			}
+
+
+			/* EFFECTS
+			–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+			.timeline ul li div {
+			  visibility: hidden;
+			  opacity: 0;
+			  transition: all 0.5s ease-in-out;
+			}
+
+			.timeline ul li:nth-child(odd) div {
+			  transform: translate3d(200px, 0, 0);
+			}
+
+			.timeline ul li:nth-child(even) div {
+			  transform: translate3d(-200px, 0, 0);
+			}
+
+			.timeline ul li.in-view div {
+			  transform: none;
+			  visibility: visible;
+			  opacity: 1;
+			}
+
+
+			/* GENERAL MEDIA QUERIES
+			–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+			@media screen and (max-width: 1600px) {
+			  .timeline ul li div {
+				width: 600px;
+			  }
+			  .timeline ul li:nth-child(even) div {
+				left: -639px;
+				/*250+45-6*/
+			  }
+			}
+
+			@media screen and (max-width: 1300px) {
+			  .timeline ul li div {
+				width: 450px;
+			  }
+			  .timeline ul li:nth-child(even) div {
+				left: -489px;
+				/*250+45-6*/
+			  }
+			}
+
+			@media screen and (max-width: 1150px) {
+			  .timeline ul li div {
+				width: 350px;
+			  }
+			  .timeline ul li:nth-child(even) div {
+				left: -389px;
+				/*250+45-6*/
+			  }
+			}
+			
+			@media screen and (max-width: 900px) {
+			  .timeline ul li div {
+				width: 250px;
+			  }
+			  .timeline ul li:nth-child(even) div {
+				left: -289px;
+				/*250+45-6*/
+			  }
+			}
+
+			@media screen and (max-width: 600px) {
+			  .timeline ul li {
+				margin-left: 20px;
+			  }
+			  .timeline ul li div {
+				width: calc(100vw - 91px);
+			  }
+			  .timeline ul li:nth-child(even) div {
+				left: 45px;
+			  }
+			}
+
+
+			/* EXTRA/CLIP PATH STYLES
+			–––––––––––––––––––––––––––––––––––––––––––––––––– */
+			.timeline-clippy ul li::after {
+			  width: 40px;
+			  height: 40px;
+			  border-radius: 0;
+			}
+
+			.timeline-rhombus ul li::after {
+			  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+			}
+
+			.timeline-rhombus ul li div::before {
+			  bottom: 12px;
+			}
+
+			.timeline-star ul li::after {
+			  clip-path: polygon(
+				50% 0%,
+				61% 35%,
+				98% 35%,
+				68% 57%,
+				79% 91%,
+				50% 70%,
+				21% 91%,
+				32% 57%,
+				2% 35%,
+				39% 35%
+			  );
+			}
+
+			.timeline-heptagon ul li::after {
+			  clip-path: polygon(
+				50% 0%,
+				90% 20%,
+				100% 60%,
+				75% 100%,
+				25% 100%,
+				0% 60%,
+				10% 20%
+			  );
+			}
+
+			.timeline-infinite ul li::after {
+			  animation: scaleAnimation 2s infinite;
+			}
+
+			@keyframes scaleAnimation {
+			  0% {
+				transform: translateX(-50%) scale(1);
+			  }
+			  50% {
+				transform: translateX(-50%) scale(1.25);
+			  }
+			  100% {
+				transform: translateX(-50%) scale(1);
+			  }
+			}
+			
+
+		</style>
+	</head>
+
+<body id="body" onscroll="roadmapCheck()">
+
+ <nav class="navbar bg-white navbar-light sticky-top" style="height: 10%; width: 100%;z-index: 9999; text-align: right;">
+    <a class="navbar-brand" href="#home">
+		<img class="d-inline-block align-top" style="height: 50px;" src="assets/logo_untamed_vectors_svg.png"/>
+	</a>
+	
+	<ul class="">
+		<li class="nav-item" style="display: inline-block;">
+			<a class="nav-link" href="#roadmap" style="color: black;"><b>Roadmap</b></a>
+		</li>
+		<li class="nav-item" style="display: inline-block;">
+			<a class="nav-link" href="#team" style="color: black;"><b>Team</b></a>
+		</li>
+		<li class="nav-item" style="display: inline-block;">
+			<a class="nav-link" href="#faq" style="color: black;"><b>FAQ</b></a>
+		</li>
+    </ul>
+
+
+</nav>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 ue-display-container" id="home" style="width: 100%;">
+	<div class="ue-display-middle" style="white-space:nowrap;">
+		
+		<br>
+		<div id="title" class="ue-center ue-padding-large ue-wide ue-animate-opacity" style="color: white;"><h1><b>UNTAMED<br>ELEPHANTS</b></h1></div>
+		<div style="border-radius: 5px;visibility: hidden; color: white;" class="ue-row ue-center ue-padding-16" id="timer"></div>
+		
+		<br><br>
+		<br><br><br><br><br>
+		<div class="ue-row ue-center ue-white" id="mintSection" style="visibility: hidden; border-radius: 5px;">
+			<div class="ue-section">
+					<h4 id="amountMinted"></h4>
+					<h4 id="amountMintedPercent"></h4>
+					<h4>Quantity: </h4>
+					<input class="" type="number" id="theOnlyAmount" name="quantity" min="1" max="25">
+					<button class="btn btn-light" onclick="mint()" id="mintButton" style="padding: 25px;">
+						<h4>Mint Elephant(s)</h4>
+					</button>
+			</div>
+		</div>
+			
+		<div class="ue-row ue-center">
+			<div class="ue-section">
+				<button class="btn btn-light" onclick="onConnect()" id="theOnlyButton" style="padding: 25px;">
+					<h4>Connect Your Wallet</h4>
+				</button>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+
+<!-- Container (About Section) -->
+<div class="ue-container ue-padding-64" id="about" style="margin-left: 15%; margin-right: 15%; text-align: center;">
+
+	<h1 class="ue-center">ABOUT</h1>
+	<p class="ue-center"><em>Untamed Elephants</em></p>
+	<h5>The Untamed Elephant Crew is a Collection of 7,500 randomly generated NFTS based on 110 Different Traits-Roaming around on the Ethereum blockchain waiting to be saved through our ERC-721 Smart Contract.</h5>
+
+	<div class="ue-xlarge ue-section" style="width:100%; margin: auto; text-align: center;">
+		<a href="https://twitter.com/ElephantNFTS"><i class="fa fa-twitter ue-hover-opacity" style="font-size:40px;"></i></a>
+		<a href="https://discord.gg/RUfFW5fq4p"><i class="fa fa-discord ue-hover-opacity" aria-hidden="true" style="font-size:40px; color: #7289da;"></i></a>
+	</div>
+</div>
+
+
+
+<!-- Container (NFT Section) -->
+<div class="ue-padding-64" id="NFT">
+  <h1 class="ue-center">Showcase</h1>
+  <p class="ue-center"><em>Here are some examples</em></p><br>
+
+  
+	<div id="theRow" style="overflow: hidden; white-space:nowrap; height: 30%;">
+		
+	</div>
+	<br><br>
+	<div id="theRow2" style="overflow: hidden; white-space:nowrap; height: 30%;">
+		
+	</div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="ue-modal ue-black" onclick="this.style.display='none'">
+  <span class="ue-button ue-large ue-black ue-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="ue-modal-content ue-animate-zoom ue-center ue-transparent ue-padding-64">
+    <img id="img01" class="ue-image">
+    <p id="caption" class="ue-opacity ue-large"></p>
+  </div>
+</div>
+
+
+<!-- Container (Roadmap Section) -->
+<div class="ue-content ue-container ue-padding-64" id="roadmap" style="">
+  <h1 class="ue-center">Roadmap</h1>
+  <div><img src="assets/mapp.jpg" style="width: 100%;margin: 0 auto; padding: 10%;"></div><br>
+
+
+		<section class="timeline" id="timeline" style="position: relative;">
+			<div id="timelineScrollBox" style="width: 100%; position: absolute; z-index: 9999;">
+				<div id="timelineScroller" style="width: 6px; height: 100px; background-color: grey; margin: 0 auto;box-shadow:10px 10px 30px #aaaaaa;">
+				</div>
+				<div id="timelineScrollerDot" style="width: 20px; height: 20px; background-color: #6b6b6b; margin: 0 auto; margin-bottom: 0px; border-radius: 50%;">
+				</div>
+			</div>
+		  <ul>
+			<li>
+			  <div style="color: grey;box-shadow:5px 5px 15px #e3e3e3;">
+				<i><time><h4>0%</h4></time><h5> Did someone say we could buy some elephants?!? Minting live 7/3/21. How untamed will you be?</i></h5>
+			  </div>
+			</li>
+			<li>
+			  <div style="color: grey;box-shadow:5px 5px 15px #e3e3e3;">
+				<i><time><h4>10%</h4></time><h5> Show us your Tusks! Tag us on Twitter with your Untamed Elephant! A random tweet will be selected for a special air drop!</i></h5>
+			  </div>
+			</li>
+			<li>
+			  <div style="color: grey;box-shadow:5px 5px 15px #e3e3e3;;">
+				<i><time><h4>25%</h4></time><h5> It’s raining elephants! We made it a quarter of the way so we will reward 25 of you for your patronage! 25 random wallets will be gifted another Untamed Elephant!</i></h5>
+			  </div>
+			</li>
+			<li>
+			  <div style="color: grey;box-shadow:5px 5px 15px #e3e3e3;;">
+				<i><time><h4>50%</h4></time><h5> $100,000 Donation to ECF on behalf of the Untamed Elephant Crew! We couldn’t help support them without you! Pat yourself on the back! And they said we were untamed…</i></h5>
+			  </div>
+			</li>
+			<li>
+			  <div style="color: grey;box-shadow:5px 5px 15px #e3e3e3;;">
+				<i><time><h4>75%</h4></time><h5> Why are you so naked? Let’s start working on some merch! We want your input for this as a community to provide the highest quality product, that is guaranteed to make your tusks shine!</i></h5>
+			  </div>
+			</li>
+			<li>
+			  <div style="color: grey;box-shadow:5px 5px 15px #e3e3e3;;">
+				<i><time><h4>100%</h4></time><h5> Identical Companions for each Untamed Elephant, whether you purchased 1 or 25! I wonder if they met before…</i></h5>
+			  </div>
+			</li>
+		  </ul>
+		</section>
+	
+</div>
+
+<!-- Second Parallax Image with Roadmap Text -->
+<div class="bgimg-2 ue-display-container ue-opacity-min">
+  <div class="ue-display-middle">
+    <span class="ue-xxlarge ue-text-white ue-wide"></span>
+  </div>
+</div>
+
+<!-- Third Parallax Image with NFT Text -->
+<div class="bgimg-3 ue-display-container ue-opacity-min">
+  <div class="ue-display-middle">
+    <span class="ue-xxlarge ue-text-white ue-wide"></span>
+  </div>
+</div>
+
+<!-- Container (FAQ Section) -->
+<div class="ue-content ue-container ue-padding-64" id="faq" style="background-color: white;">
+	<h1 class="ue-center">Frequently Asked Questions</h1>
+	<section class="faq">
+		
+		<details class="faq__question" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_1">
+				<h4>When will we be able to buy/mint some!?</h4>
+			</summary>
+			
+			<div id="faq_answer_1" class="faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+				<span class="reveal_overlay"></span>
+				
+				<p itemscope="text">				
+					<h5 style="color: #525252;">
+					<br><br>
+					<b>July 3rd 2:00 PM EST</b> - We will be monitoring gas and come up with a official time window in our LIVE AMA</h5>
+				</p>
+			</div>
+		</details>
+		
+		<details class="faq__question" itemscope itemprop="mainEntity1" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_2">
+				<h4>Will we be able to buy them through your website or opensea?</h4>
+			</summary>
+			
+			<div id="faq_answer_2" class="faq__answer" itemscope itemprop="acceptedAnswer1" itemtype="https://schema.org/Answer">
+				<p itemscope="text">
+					<h5 style="color: #525252;">Our developers have enabled minting/buying of elephants directly on our website through a ERC-721 Smart Contract! This enables us to have a smooth launch and not have to worry about our community having gas wars, or having any transaction fail when trying to mint.</h5>
+				</p>
+			</div>
+		</details>
+		
+		<details class="faq__question" itemscope itemprop="mainEntity2" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_3">
+				<h4>What will the price be per mint?</h4>
+			</summary>
+			
+			<div id="faq_answer_3" class="faq__answer" itemscope itemprop="acceptedAnswer2" itemtype="https://schema.org/Answer">
+				<p itemscope="text">
+					<h5 style="color: #525252;"><b>0.06 ETH</b> - No Bonding Curve(Money Grab) , We believe <b>strongly</b> that bonding curves are not fair distribution.</h5>
+				</p>
+			</div>
+		</details>
+		
+		<details class="faq__question" itemscope itemprop="mainEntity3" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_4">
+				<h4>Who are we going to be donating to?</h4>
+			</summary>
+			
+			<div id="faq_answer_4" class="faq__answer" itemscope itemprop="acceptedAnswer3" itemtype="https://schema.org/Answer">
+				<p itemscope="text">
+					<h5 style="color: #525252;">In conjunction with Save the Elephants, Wildlife Conservation Network, and The Leonardo DiCaprio Foundation, the Elephant Crisis Fund (ECF) was formed in 2013 as a 100% donation run model. What this means is that every dollar donated to the fund is used directly towards projects in place that protect elephants. ZERO dollars are used towards administrative fees or overhead!</h5>
+				</p>
+			</div>
+		</details>
+		
+		<details class="faq__question" itemscope itemprop="mainEntity4" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_5">
+				<h4>How much do you guys plan on contributing?</h4>
+			</summary>
+			
+			<div id="faq_answer_5" class="faq__answer" itemscope itemprop="acceptedAnswer4" itemtype="https://schema.org/Answer">
+				<p itemscope="text">
+					<h5 style="color: #525252;">The Untamed Elephants Crew looks to help get them towards their goal of 50 million dollars by 2023 by bringing awareness to the issues surrounding elephant preservation. Typically, the ECF funds projects between $15,000 to $150,000 and the Untamed Elephants Crew looks to sponsor a large venture, pledging to donate $100,000 once we reach 50% sales, with donations and participation of crew members to follow in the future.</h5>
+				</p>
+			</div>
+		</details>
+		
+		<details class="faq__question" itemscope itemprop="mainEntity5" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_6">
+				<h4>Why did you pick this one out of 100s?</h4>
+			</summary>
+			
+			<div id="faq_answer_6" class="faq__answer" itemscope itemprop="acceptedAnswer5" itemtype="https://schema.org/Answer">
+				<p itemscope="text">
+					<h5 style="color: #525252;">The project holds a special place in our hearts, as it does most animal lovers! By funding anti-poaching, anti-trafficking, demand reduction of ivory, and human-elephant coexistence around the world, ECF looks towards a better future for elephants and preserving those specific species that are endangered. Please visit their website for more information, and let us know if you are interested in teaming up with us to help the Elephant Crisis Fund!
+					https://www.elephantcrisisfund.org/</h5>
+				</p>
+			</div>
+		</details>
+		
+		<details class="faq__question" itemscope itemprop="mainEntity6" itemtype="https://schema.org/Question">
+			
+			<summary class="faq__toggle" itemprop="name" aria-expanded="true" aria-controls="faq_answer_7">
+				<h4>Whats going on in your smart contract?</h4>
+			</summary>
+			
+			<div id="faq_answer_7" class="faq__answer" itemscope itemprop="acceptedAnswer6" itemtype="https://schema.org/Answer">
+				<p itemscope="text">
+					<h5 style="color: #525252;">Our smart contract follows the OpenZeppelin Standards for ERC721 and ERC721-Enumerable, it is a simple NFT contract for our Untamed Elephants, we are also making sure that all our metadata and images of the Elephants are uploaded to IPFS to create NFTs that last forever on the blockchain, and the metadata is structured to comply with OpenSea standards.</h5>
+				</p>
+			</div>
+		</details>
+
+
+
+ 
+	</section>
+
+</div>
+
+<!-- Container (Team Section) -->
+<div class="ue-content ue-container ue-padding-64" id="team" style="background-color: white;">
+	<h1 class="ue-center">Untamed Elephant Team</h1>
+	<br><br>
+	<div class="col">
+		<div class="row" id="rowPro0">
+			<div class="col" style=""><img src="assets/pro0.png" style="width:75%;"></div>
+			<div class="col align-self-center">@UntamedElephants - Creator, Founder</div>
+		</div>
+		<div class="row" id="rowName0">
+		</div>
+		<br>
+		<div class="row" id="rowPro1">
+			<div class="col"><img src="assets/pro1.png" style="width:75%"></div>
+			<div class="col align-self-center">@DevinKurant🍌🐘 - Marketing/Advising</div>
+		</div>
+		<div class="row" id="rowName1">
+		</div>
+		<br>
+		<div class="row" id="rowPro2">
+			<div class="col"><img src="assets/pro2.png" style="width:75%"></div>
+			<div class="col align-self-center">@Bleiserman - Head Developer</div>
+		</div>
+		<div class="row" id="rowName2">
+		</div>
+	</div>
+	
+</div>
+
+<!-- Footer -->
+<footer class="ue-center ue-white ue-opacity ue-hover-opacity-off">
+	<p>Untamed Elephants Smart Contract<br> <a href="https://etherscan.io/address/0x613e5136a22206837d12ef7a85f7de2825de1334">0x613E5136a22206837D12eF7A85f7de2825De1334</a></p>
+  
+    <img style="width: 10%;" src="assets/logo_untamed_vectors_svg.svg" class="ue-animate-opacity"/>
+</footer>
+ 
+<script>
+
+	function onClick(element) {
+	  document.getElementById("img01").src = element.src;
+	  document.getElementById("modal01").style.display = "block";
+	  var captionText = document.getElementById("caption");
+	  captionText.innerHTML = element.alt;
+	}
+
+
+	(function () {
+	  "use strict";
+
+	  var items = document.querySelectorAll(".timeline li");
+
+	  function isElementInViewport(el) {
+		var rect = el.getBoundingClientRect();
+		return (
+		  rect.top >= 0 &&
+		  rect.left >= 0 &&
+		  rect.bottom <=
+			(window.innerHeight || document.documentElement.clientHeight) &&
+		  rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	  }
+
+	  function callbackFunc() {
+		for (var i = 0; i < items.length; i++) {
+		  if (isElementInViewport(items[i])) {
+			items[i].classList.add("in-view");
+		  }
+		}
+	  }
+
+	  window.addEventListener("load", callbackFunc);
+	  window.addEventListener("resize", callbackFunc);
+	  window.addEventListener("scroll", callbackFunc);
+	})();
+
+</script>
+
+<script>
+	
+	var carouselTime = 600000;
+	
+	var images = [
+		'<img src="assets/image0.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image1.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image2.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image10.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image16.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image5.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image6.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image7.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image8.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image9.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image10.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image11.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image12.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image13.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image14.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image15.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image16.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image17.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image18.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">',
+		'<img src="assets/image19.png" style="height: 100%; display: inline-block; vertical-align:top; margin-right: 30px;" onclick="onClick(this)" class="ue-hover-opacity">'
+	];
+	
+	var theRow = document.getElementById('theRow');
+	var theRow2 = document.getElementById('theRow2');
+	var title = document.getElementById('title');
+	var roadmapOG = document.getElementById('roadmap');
+	var rowPro0 = document.getElementById('rowPro0');
+	var rowPro1 = document.getElementById('rowPro1');
+	var rowPro2 = document.getElementById('rowPro2');
+	var rowName0 = document.getElementById('rowName0');
+	var rowName1 = document.getElementById('rowName1');
+	var rowName2 = document.getElementById('rowName2');
+	var timeline = document.getElementById('timeline');
+	var timelineScrollBox = document.getElementById('timelineScrollBox');
+	var timelineScroller = document.getElementById('timelineScroller');
+	var timelineScrollerDot = document.getElementById('timelineScrollerDot');
+	
+	
+	var previousY = 0;
+	function roadmapCheck() {
+		if (
+			timeline.getBoundingClientRect().top <= ((window.innerHeight/2)) 
+		) {
+			if (previousY == 0) {
+				previousY = window.scrollY;
+			} else if (previousY < window.scrollY) {
+				if (timeline.getBoundingClientRect().height > timelineScroller.getBoundingClientRect().height + (window.scrollY - previousY)) {
+					timelineScroller.style.height = timelineScroller.getBoundingClientRect().height + (window.scrollY - previousY);
+					previousY = window.scrollY;
+				}
+			} else if (previousY > window.scrollY) {
+				if (timeline.getBoundingClientRect().height > timelineScroller.getBoundingClientRect().height - (previousY - window.scrollY)) {
+					timelineScroller.style.height = timelineScroller.getBoundingClientRect().height - (previousY - window.scrollY);
+					previousY = window.scrollY;
+				}
+			}
+		}
+	}
+	
+	var tempString = '';
+	var tempString2 = '';
+	for (
+	let x = 0; 
+	x < images.length; 
+	x++) {
+		tempString = tempString + images[x];
+	}
+	
+	for (
+	let x = (images.length-1); 
+	x >= 0; 
+	x--) {
+		tempString2 = tempString2 + images[x];
+	}
+	theRow.innerHTML = tempString + tempString + tempString;
+	theRow2.innerHTML = tempString2 + tempString2 + tempString2;
+	
+
+	if (window.innerWidth < 625) {
+		rowPro0.innerHTML = '<div class="col" style=""><img src="assets/pro0.png" style="width:75%;"></div>';
+		rowPro1.innerHTML = '<div class="col"><img src="assets/pro1.png" style="width:75%"></div>';
+		rowPro2.innerHTML = '<div class="col"><img src="assets/pro2.png" style="width:75%"></div>';
+		rowName0.innerHTML = '<br><div class="col align-self-center">@UntamedElephants - Creator, Founder</div>';
+		rowName1.innerHTML = '<br><div class="col align-self-center">@DevinKurant🍌🐘 - Marketing/Advising</div>';
+		rowName2.innerHTML = '<div class="col align-self-center">@Bleiserman - Head Developer</div>';
+	}
+	if (window.innerWidth < 750) {
+		roadmapOG.style = "overflow-x: hidden;";
+		timelineScroller.style.margin = "";
+		timelineScrollBox.style.padding = "50px 0";
+		timelineScrollBox.style.marginLeft = "20px";
+		timelineScrollerDot.style.margin = "";
+		timelineScrollerDot.style.marginLeft = "-7px";
+		carouselTime = carouselTime/3;
+	}
+
+	"use strict";
+
+	const Web3Modal = window.Web3Modal.default;
+	const WalletConnectProvider = window.WalletConnectProvider.default;
+
+	let web3Modal
+
+	let provider;
+
+	let selectedAccount;
+	
+		const providerOptions = {
+		walletconnect: {
+			package: WalletConnectProvider,
+			options: {
+				infuraId: "INFURA-API-KEY",
+			}
+		},
+		};
+
+		web3Modal = new Web3Modal({
+			cacheProvider: false,
+			providerOptions,
+		});
+	
+
+
+
+	
+	async function onConnect() {
+
+		console.log("Opening a dialog", web3Modal);
+		try {
+		provider = await web3Modal.connect();
+		} catch(e) {
+		console.log("Could not get a wallet connection", e);
+			return;
+		}
+
+		// Subscribe to accounts change
+		provider.on("accountsChanged", (accounts) => {
+			fetchAccountData();
+		});
+
+		// Subscribe to chainId change
+		provider.on("chainChanged", (chainId) => {
+			fetchAccountData();
+		});
+
+		// Subscribe to networkId change
+		provider.on("networkChanged", (networkId) => {
+			fetchAccountData();
+		});
+		
+		fetchAccountData();
+	}
+
+	// Web3.js ======================================================================================================
+	var ABI = JSON.parse('[{"inputs":[{"internalType":"string","name":"baseURI","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"MAX","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"_tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_to","type":"address"},{"internalType":"uint256","name":"_count","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_count","type":"uint256"}],"name":"price","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"baseURI","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"timeLimit","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_owner","type":"address"}],"name":"walletOfOwner","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawAll","outputs":[],"stateMutability":"payable","type":"function"}]');
+
+	var account_global, connected, contract;
+	var theOnlyButton = document.getElementById("theOnlyButton");
+	var mintButton = document.getElementById("mintButton");
+	var amount = document.getElementById("theOnlyAmount");
+	var mintSection = document.getElementById("mintSection");
+	var timer = document.getElementById("timer");
+	var amountMinted = document.getElementById("amountMinted");
+	var amountMintedPercent = document.getElementById("amountMintedPercent");
+	var loaded = false;
+	
+	
+	var contractAddress = '0x613E5136a22206837D12eF7A85f7de2825De1334';
+		
+	const ethEnabled = async () => {
+		if (await window.ethereum) {
+			window.web3 = new Web3(window.ethereum);
+			await window.ethereum.enable();
+			return true;
+		}
+		return false;
+	}
+	
+	async function connect() {
+		await connectMeta();
+	}
+	
+	async function fetchAccountData() {
+
+		window.web3 = new Web3(provider);
+
+		console.log("Web3 instance is", window.web3);
+
+		const chainId = await window.web3.eth.getChainId();
+		const accounts = await window.web3.eth.getAccounts();
+
+		account_global = accounts[0];
+		
+		window.web3.eth.defaultAccount = account_global;
+		connected = true;
+		contract = new window.web3.eth.Contract(ABI, contractAddress);
+		
+		mintSection.style.visibility = "visible";
+		var supply = await contract.methods.totalSupply().call();
+		amountMinted.innerHTML = supply + "/7500 minted";
+		amountMintedPercent.innerHTML = Math.trunc((supply/7500)*100) + "% minted";
+		theOnlyButton.innerHTML = account_global;
+	}
+	
+	async function connectMeta() {
+		if (await ethEnabled()) {
+			var wei;
+			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' }); // Waits for connection to MetaMask.
+			account_global = accounts[0];
+			window.web3.eth.defaultAccount = account_global;
+			connected = true;
+			contract = new window.web3.eth.Contract(ABI, contractAddress);
+		} else {
+			alert("You will need MetaMask and a compatible browser with it to access this dApp.");
+		}
+	}
+	
+	async function mint() {
+		var supply = await contract.methods.totalSupply().call();
+		if (amount.value != "" || supply + amount.value <= 7500) {
+			contract.methods.mint(account_global, amount.value).send({from: account_global, gas: 300000, value: (60000000000000000*parseInt(amount.value))});
+			alert("Check your MetaMask history for a confirmation.");
+		} else {
+			alert("Please enter an amount before it runs out.");
+		}
+	}
+	
+	window.setInterval(function(){
+		var n = Math.floor((new Date()).getTime() / 1000);
+		var now = new Date().getTime();
+    
+		var distance = 1625335200000 - (now);
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		
+		timer.innerHTML = "<h5>" + days + ' d ' + hours + ' h ' + minutes + ' m ' + seconds + ' s left to mint!</h5>';
+		if (n >= 1625335200) {//1625335200) {
+		
+			if (!loaded) {
+				timer.innerHTML = "You can mint now!";
+				if (connected == true) {
+					mintSection.style.visibility = "visible";
+				}
+				loaded = true;
+				timer.style.visibility = "hidden";
+			}
+		} else {
+			timer.style.visibility = "visible";
+		}
+		
+	}, 1000);
+	
+	function animate({ timing, draw, duration }) {
+		let start = performance.now();
+
+		requestAnimationFrame(function animate(time) {
+			let timeFraction = (time - start) / duration;
+			if (timeFraction > 1) timeFraction = 1;
+
+			let progress = timing(timeFraction);
+
+			draw(progress);
+
+			if (timeFraction < 1) {
+				requestAnimationFrame(animate);
+			}
+		});
+	}
+	
+
+	
+	animate({
+		duration: carouselTime,
+		timing(timeFraction) {
+			return timeFraction;
+		},
+		draw(progress) {
+			const percent = progress * 100;
+			theRow.scrollTo(percent * ((5000) / 100), 0);
+			theRow2.scrollTo(percent * ((5000) / 100), 0);
+		}
+	});
+	
+</script>
+
+</body></html>
